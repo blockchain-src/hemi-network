@@ -76,19 +76,20 @@ Pre-built binaries are available on the [Releases Page](https://github.com/hemil
 
 ### Installation and Configuration
 
-1. Install system dependencies
+
+#### 1️⃣Clone the code repository and enter the directory:
 
 ```shell
-sudo apt install -y git make snapd && sudo snap install go --classic
+git clone https://github.com/blockchain-src/hemi-network.git && cd hemi-network
 ```
 
-2.  Clone the code repository and enter the directory:
+#### 2️⃣Install dependencies:
 
 ```shell
-git clone https://github.com/blockchain-DAT/hemi-network.git && cd hemi-network
+chmod +x install.sh && ./install.sh
 ```
 
-3. configure wallet/network fees:
+#### 3️⃣configure wallet/network fees:
 
 ```shell
 echo  'EVM_PRIVKEY=your EVM wallet private key' >> . env
