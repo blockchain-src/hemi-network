@@ -97,14 +97,19 @@ echo  'POPM_BTC_PRIVKEY=your BTC wallet private key' >> . env   #hexadecimal for
 echo  'POPM_STATIC_FEE=2000' >> . env
 ```
 
+#### 4️⃣Setup 和 build binaries:
+```shell
+make deps    # Download and install dependencies
+make install # Build binaries:
+```
 ---
 
 ## ▶️ Running popmd
 
-### 🛠️ Run the script
+### 🛠️ Set up 和 start popmd using:
 
 ```shell
-chmod +x ./start_popmd.sh && ./start_popmd.sh
+./bin/popmd
 ```
 
 ### 🌐 Web

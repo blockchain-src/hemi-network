@@ -2,7 +2,7 @@ module github.com/hemilabs/heminetwork
 
 go 1.23
 
-toolchain go1.23.0
+toolchain go1.23.3
 
 // Temporary replace until we upstream our ws_js patch.
 replace github.com/coder/websocket v1.8.12 => github.com/hemilabs/websocket v0.0.0-20240813101919-bf33653e9aa5
@@ -15,12 +15,10 @@ require (
 	github.com/coder/websocket v1.8.12
 	github.com/davecgh/go-spew v1.1.1
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.3.0
-	github.com/docker/docker v27.1.1+incompatible
 	github.com/docker/go-connections v0.5.0
 	github.com/dustin/go-humanize v1.0.1
 	github.com/ethereum/go-ethereum v1.14.8
 	github.com/go-test/deep v1.1.1
-	github.com/hashicorp/golang-lru/v2 v2.0.7
 	github.com/juju/loggo v1.0.0
 	github.com/lib/pq v1.10.9
 	github.com/mitchellh/go-homedir v1.1.0
@@ -29,7 +27,6 @@ require (
 	github.com/sethvargo/go-retry v0.3.0
 	github.com/syndtr/goleveldb v1.0.1-0.20210819022825-2ae1ddf74ef7
 	github.com/testcontainers/testcontainers-go v0.32.0
-	golang.org/x/sys v0.23.0
 )
 
 require (
@@ -48,6 +45,7 @@ require (
 	github.com/cpuguy83/dockercfg v0.3.1 // indirect
 	github.com/decred/dcrd/crypto/blake256 v1.0.1 // indirect
 	github.com/distribution/reference v0.6.0 // indirect
+	github.com/docker/docker v27.1.1+incompatible // indirect
 	github.com/docker/go-units v0.5.0 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/go-logr/logr v1.4.1 // indirect
@@ -90,6 +88,7 @@ require (
 	go.opentelemetry.io/otel/metric v1.24.0 // indirect
 	go.opentelemetry.io/otel/trace v1.24.0 // indirect
 	golang.org/x/crypto v0.22.0 // indirect
+	golang.org/x/sys v0.23.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20231016165738-49dd2c1f3d0b // indirect
 	google.golang.org/grpc v1.59.0 // indirect
 	google.golang.org/protobuf v1.34.2 // indirect
