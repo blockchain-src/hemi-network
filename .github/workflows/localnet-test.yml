@@ -1,0 +1,50 @@
+# Copyright (c) 2024 Hemi Labs, Inc.
+# Use of this source code is governed by the MIT License,
+# which can be found in the LICENSE file.
+
+# GitHub Actions workflow to run e2e network tests.
+name: "Localnet Test"
+on:
+  workflow_dispatch: # Manually triggered
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.event.number || github.ref }}"
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: "Test"
+    runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        go-version: [ "1.23.x" ]
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: "Setup Go ${{ matrix.go-version }}"
+        uses: actions/setup-go@41dfa10bad2bb2ae585af6ee5bb4d7d973ad74ed # v5.1.0
+        with:
+          go-version: "${{ matrix.go-version }}"
+          cache: true
+          check-latest: true
+
+      - name: "Download and verify dependencies"
+        run: make deps
+
+      - name: "build localnet"
+        run: docker compose -f ./e2e/docker-compose.yml build
+
+      - name: "run localnet"
+        run: docker compose -f ./e2e/docker-compose.yml up -d
+
+      - name: "kill an op-node after a minute"
+        run: sleep 60 && docker compose -f ./e2e/docker-compose.yml down op-node
+
+      - name: "get localnet stats"
+        working-directory: ./e2e/monitor
+        # XXX should this be a make command?
+        run: go test -v ./...
